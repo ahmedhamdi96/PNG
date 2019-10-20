@@ -20,8 +20,14 @@ public class PrimeGeneratorBLL {
     PrimeGeneratorDAL primeGeneratorDAL;
     private final static Logger LOGGER = Logger.getLogger(PrimeGeneratorBLL.class);
 
+    /**
+     * identify which strategy to use based on strategy enum
+     * @param from natural number to start with
+     * @param to natural number to end with
+     * @param primeStrategyEnum strategy enum
+     * @return primes list
+     */
     private ArrayList<Integer> primeStrategyGenerate (Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum){
-
         switch (primeStrategyEnum){
             case STRATEGY_1: return new Strategy1().generatePrimes(from, to);
             case STRATEGY_2: return new Strategy2().generatePrimes(from, to);
@@ -31,10 +37,17 @@ public class PrimeGeneratorBLL {
         }
     }
 
+    /**
+     * generate primes list based on strategy enum
+     * @param from natural number to start with
+     * @param to natural number to end with
+     * @param primeStrategyEnum strategy enum
+     * @return a DTO containing a message(str) and primes(list of integers)
+     */
     public PrimeResponseDTO generatePrimeNumbers(Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum){
         LOGGER.info("generatePrimeNumbers: ENTER");
         ArrayList<Integer> primes = primeStrategyGenerate(from, to, primeStrategyEnum);
         LOGGER.info("generatePrimeNumbers: EXIT");
-        return new PrimeResponseDTO(null, primes);
+        return new PrimeResponseDTO(primes.size() + " prime numbers generated.", primes);
     }
 }

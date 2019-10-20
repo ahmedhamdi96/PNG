@@ -18,7 +18,7 @@ A JavaEE web application to a prime number generator with 4 different prime numb
 
 > mvn clean install
 
-> java -jar target\PrimeNumberGenerator-thorntail.jar
+> java -jar target/PrimeNumberGenerator-thorntail.jar
 
 > GET http://localhost:8080/app/prime
 
