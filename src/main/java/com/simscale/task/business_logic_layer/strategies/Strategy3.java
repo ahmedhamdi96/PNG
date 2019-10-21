@@ -1,16 +1,30 @@
 package com.simscale.task.business_logic_layer.strategies;
 
-import com.simscale.task.business_logic_layer.interfaces.PrimeStrategyInterface;
 
-import java.util.ArrayList;
-
-public class Strategy3 implements PrimeStrategyInterface {
+public class Strategy3 extends PrimeStrategy {
 
     @Override
-    public ArrayList<Integer> generatePrimes(Integer from, Integer to) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        list.add(7);
-        list.add(8);
-        return list;
+    boolean isPrime(Integer n) {
+        if (n == 1){
+            return false;
+        }
+
+        if (n == 2){
+            return true;
+        }
+
+        if (n > 2 && n%2 == 0){
+            return false;
+        }
+
+        Integer maxDivisor = (int) Math.floor(Math.sqrt(n));
+
+        for(Integer i=3; i<=maxDivisor; i+=2){
+            if (n%i == 0){
+                return false;
+            }
+        }
+
+        return true;
     }
 }
