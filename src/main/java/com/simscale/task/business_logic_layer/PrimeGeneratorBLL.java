@@ -11,13 +11,14 @@ import org.apache.log4j.Logger;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @Stateless
 public class PrimeGeneratorBLL {
 
     @EJB
-    PrimeGeneratorDAL primeGeneratorDAL;
+    private PrimeGeneratorDAL primeGeneratorDAL;
     private final static Logger LOGGER = Logger.getLogger(PrimeGeneratorBLL.class);
 
     /**
@@ -46,8 +47,16 @@ public class PrimeGeneratorBLL {
      */
     public PrimeResponseDTO generatePrimeNumbers(Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum){
         LOGGER.info("generatePrimeNumbers: ENTER");
+        Long start = System.currentTimeMillis();
         ArrayList<Integer> primes = primeStrategyGenerate(from, to, primeStrategyEnum);
+        Long finish = System.currentTimeMillis();
+
+        Float time = (finish - start) / 1000F;
+        Timestamp timestamp =  new Timestamp(System.currentTimeMillis());
+        String strategy  =  primeStrategyEnum.name().toLowerCase();
+        Integer primesNo = primes.size();
+        primeGeneratorDAL.addRecord(timestamp, from, to, time,strategy, primesNo);
         LOGGER.info("generatePrimeNumbers: EXIT");
-        return new PrimeResponseDTO(primes.size() + " prime numbers generated.", primes);
+        return new PrimeResponseDTO(primesNo + " prime numbers generated.", primes);
     }
 }

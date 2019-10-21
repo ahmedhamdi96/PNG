@@ -13,6 +13,9 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <version.mysql>8.0.16</version.mysql>
+    <version.eclipselink>2.2.1</version.eclipselink>
   </properties>
 
   <dependencyManagement>
@@ -76,11 +79,28 @@
     </dependency>
 
     <dependency>
+      <groupId>io.thorntail</groupId>
+      <artifactId>datasources</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
     </dependency>
 
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${version.mysql}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>javax.persistence</artifactId>
+      <version>${version.eclipselink}</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
 </project>

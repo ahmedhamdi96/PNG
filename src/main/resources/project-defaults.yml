@@ -1,0 +1,12 @@
+swarm:
+  datasources:
+    jdbc-drivers:
+      com.mysql:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        driver-module-name: com.mysql
+    data-sources:
+      umsdb:
+        driver-name: com.mysql
+        connection-url: jdbc:mysql://localhost:3306/PNGDB
+        user-name: root
+        password: root
