@@ -79,7 +79,7 @@ public class PrimeGeneratorEndpoint {
 			LOGGER.info("doGet: EXIT");
 			return Response.ok().entity(primeResponseDTO).build();
 		} catch (IllegalArgumentException e){
-			LOGGER.error(e.getMessage(), e);
+			LOGGER.info(e.getMessage());
 			PrimeResponseDTO primeResponseDTO = new PrimeResponseDTO(e.getMessage(), null, null);
 			return Response.status(Response.Status.BAD_REQUEST).entity(primeResponseDTO).build();
 		} catch (Exception e) {

@@ -46,20 +46,20 @@ public class PrimeResponseDTO {
             return "null";
         }
 
-        String s = "[";
+        StringBuilder s = new StringBuilder("[ ");
 
-        for (int i=0; i<primes.size()-1; i++){
-            s+=primes.get(i)+", ";
+        for (Integer p:primes){
+            s.append(p);
         }
 
-        s+=primes.get(primes.size()-1);
-        s+="]";
-        return s;
+        s.append("]");
+
+        return s.toString();
     }
 
     @Override
     public String toString() {
-        String time = this.time == null? null:String.valueOf(this.time);
+        String time = this.time == null? "null":String.valueOf(this.time);
 
         return "{" +
                 "message='" + message + '\'' +

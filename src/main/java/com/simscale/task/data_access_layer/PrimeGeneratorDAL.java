@@ -22,7 +22,7 @@ public class PrimeGeneratorDAL {
      * @param toInt natural number to end with
      * @param time time elapsed by the strategy
      * @param strategy strategy chosen by user
-     * @param primesNo number of prime numbers generated
+     * @param primesNo number of prime number(s) generated
      */
     public void addRecord(Timestamp timestamp, Integer fromInt, Integer toInt, Float time, String strategy, Integer primesNo){
         LOGGER.info("addRecord: ENTER");

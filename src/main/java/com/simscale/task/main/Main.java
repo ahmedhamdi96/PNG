@@ -13,29 +13,35 @@ public class Main {
   private static PrimeGeneratorBLL primeGeneratorBLL= new PrimeGeneratorBLL();
 
   public static void main(String[] args) {
-    try{
-      Integer from = Integer.valueOf(args[0]);
-      Integer to = Integer.valueOf(args[1]);
-      String strategy = args[2];
-      primeGeneratorEndpoint.verifyInput(from, to, strategy);
-      PrimeStrategyEnum primeStrategyEnum = primeGeneratorEndpoint.strategyStringToEnum(strategy);
+    try {
 
-      Long start = System.currentTimeMillis();
-      ArrayList<Integer> primes = primeGeneratorBLL.primeStrategyGenerate(from, to, primeStrategyEnum);
-      Long finish = System.currentTimeMillis();
+        if (args.length != 3) {
+            throw new IllegalArgumentException("The args (from, to, strategy) are required!");
+        }
 
-      Float time = (finish - start) / 1000F;
-      Integer primesNo = primes.size();
+        Integer from = Integer.valueOf(args[0]);
+        Integer to = Integer.valueOf(args[1]);
+        String strategy = args[2];
 
-      PrimeResponseDTO primeResponseDTO = new PrimeResponseDTO(primesNo + " prime numbers generated.", time, primes);
-      System.out.println(primeResponseDTO);
+        primeGeneratorEndpoint.verifyInput(from, to, strategy);
+        PrimeStrategyEnum primeStrategyEnum = primeGeneratorEndpoint.strategyStringToEnum(strategy);
+
+        Long start = System.currentTimeMillis();
+        ArrayList<Integer> primes = primeGeneratorBLL.primeStrategyGenerate(from, to, primeStrategyEnum);
+        Long finish = System.currentTimeMillis();
+
+        Float time = (finish - start) / 1000F;
+        Integer primesNo = primes.size();
+
+        PrimeResponseDTO primeResponseDTO = new PrimeResponseDTO(primesNo + " prime number(s) generated.", time, primes);
+        System.out.println(primeResponseDTO);
+    } catch(NumberFormatException e){
+        String msg = "First 2 arguments should be integers!";
+        System.out.println(msg);
     } catch (IllegalArgumentException e){
-        PrimeResponseDTO primeResponseDTO = new PrimeResponseDTO(e.getMessage(), null, null);
-        System.out.println(primeResponseDTO);
+        System.out.println(e.getMessage());
     } catch (Exception e) {
-        String msg = "Something went wrong! Contact development team.";
-        PrimeResponseDTO primeResponseDTO = new PrimeResponseDTO(msg, null, null);
-        System.out.println(primeResponseDTO);
+        e.printStackTrace();
     }
   }
 }

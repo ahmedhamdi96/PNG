@@ -62,6 +62,6 @@ public class PrimeGeneratorBLL {
         primeGeneratorDAL.addRecord(timestamp, from, to, time,strategy, primesNo);
 
         LOGGER.info("generatePrimeNumbers: EXIT");
-        return new PrimeResponseDTO(primesNo + " prime numbers generated.", time, primes);
+        return new PrimeResponseDTO(primesNo + " prime number(s) generated.", time, primes);
     }
 }
