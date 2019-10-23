@@ -16,6 +16,8 @@ A JavaEE web application to a prime number generator with 4 different prime numb
 
 ## How To Run
 
+### Web Application
+
 > mvn clean install
 
 > java -jar target/PrimeNumberGenerator-thorntail.jar
@@ -24,7 +26,17 @@ A JavaEE web application to a prime number generator with 4 different prime numb
 
 *build and run the application, then make a GET request having the required parameters*
 
-* Strategies : strategy_1, strategy_2, strategy_3, sieve_strategy 
+* Strategies : strategy_1, strategy_2, strategy_3, sieve_strategy
+
+### Command-line 
+
+> mvn compile
+
+> mvn exec:java -Dexec.mainClass="com.simscale.task.main.Main" -Dexec.args="1 100 sieve_strategy"
+
+*"1 100 sieve_strategy" is an example showing how to pass arguments*
+
+* Strategies : strategy_1, strategy_2, strategy_3, sieve_strategy
 
 ## References
 * [Prime Number Generation Analysis](https://www.geeksforgeeks.org/analysis-different-methods-find-prime-number-python/)

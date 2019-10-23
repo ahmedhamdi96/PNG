@@ -30,7 +30,7 @@ public class PrimeGeneratorEndpoint {
 	 * @param to natural number to end with
 	 * @param strategy strategy to find the primes
 	 */
-	private void verifyInput(Integer from, Integer to, String strategy){
+	public void verifyInput(Integer from, Integer to, String strategy){
 		if (from == null || to == null || strategy == null){
 			throw new IllegalArgumentException("The query params (from, to, strategy) are required!");
 		}
@@ -49,7 +49,7 @@ public class PrimeGeneratorEndpoint {
 	 * @param strategy strategy given by user as a string
 	 * @return strategy enum
 	 */
-	private PrimeStrategyEnum strategyStringToEnum(String strategy){
+	public PrimeStrategyEnum strategyStringToEnum(String strategy){
 		for (PrimeStrategyEnum primeStrategyEnum : PrimeStrategyEnum.values()) {
 			if (primeStrategyEnum.name().equalsIgnoreCase(strategy))
 				return primeStrategyEnum;

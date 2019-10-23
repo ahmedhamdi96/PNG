@@ -40,4 +40,31 @@ public class PrimeResponseDTO {
     public void setPrimes(ArrayList<Integer> primes) {
         this.primes = primes;
     }
+
+    private String primesToString(ArrayList<Integer> primes){
+        if (primes == null){
+            return "null";
+        }
+
+        String s = "[";
+
+        for (int i=0; i<primes.size()-1; i++){
+            s+=primes.get(i)+", ";
+        }
+
+        s+=primes.get(primes.size()-1);
+        s+="]";
+        return s;
+    }
+
+    @Override
+    public String toString() {
+        String time = this.time == null? null:String.valueOf(this.time);
+
+        return "{" +
+                "message='" + message + '\'' +
+                ", time=" + time +
+                ", primes=" + primesToString(primes) +
+                '}';
+    }
 }

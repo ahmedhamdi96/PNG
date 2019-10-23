@@ -28,7 +28,7 @@ public class PrimeGeneratorBLL {
      * @param primeStrategyEnum strategy enum
      * @return primes list
      */
-    private ArrayList<Integer> primeStrategyGenerate (Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum){
+    public ArrayList<Integer> primeStrategyGenerate (Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum){
         switch (primeStrategyEnum){
             case STRATEGY_1: return new Strategy1().generatePrimes(from, to);
             case STRATEGY_2: return new Strategy2().generatePrimes(from, to);
