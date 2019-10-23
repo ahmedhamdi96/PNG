@@ -47,16 +47,21 @@ public class PrimeGeneratorBLL {
      */
     public PrimeResponseDTO generatePrimeNumbers(Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum){
         LOGGER.info("generatePrimeNumbers: ENTER");
+        Timestamp timestamp =  new Timestamp(System.currentTimeMillis());
+        String strategy  =  primeStrategyEnum.name().toLowerCase();
+
+        LOGGER.info("generatePrimeNumbers: [timestamp: "+timestamp+", from: "+from+", to: "+to+", strategy: "+strategy+"]");
+
         Long start = System.currentTimeMillis();
         ArrayList<Integer> primes = primeStrategyGenerate(from, to, primeStrategyEnum);
         Long finish = System.currentTimeMillis();
 
         Float time = (finish - start) / 1000F;
-        Timestamp timestamp =  new Timestamp(System.currentTimeMillis());
-        String strategy  =  primeStrategyEnum.name().toLowerCase();
         Integer primesNo = primes.size();
+
         primeGeneratorDAL.addRecord(timestamp, from, to, time,strategy, primesNo);
+
         LOGGER.info("generatePrimeNumbers: EXIT");
-        return new PrimeResponseDTO(primesNo + " prime numbers generated.", primes);
+        return new PrimeResponseDTO(primesNo + " prime numbers generated.", time, primes);
     }
 }

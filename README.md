@@ -20,9 +20,11 @@ A JavaEE web application to a prime number generator with 4 different prime numb
 
 > java -jar target/PrimeNumberGenerator-thorntail.jar
 
-> GET http://localhost:8080/app/prime
+> GET http://localhost:8080/app/prime?from=X&to=Y&strategy=Z
 
-*build and run the application, then make a GET request*
+*build and run the application, then make a GET request having the required parameters*
+
+* Strategies : strategy_1, strategy_2, strategy_3, sieve_strategy 
 
 ## References
 * [Prime Number Generation Analysis](https://www.geeksforgeeks.org/analysis-different-methods-find-prime-number-python/)

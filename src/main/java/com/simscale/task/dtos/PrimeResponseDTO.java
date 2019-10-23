@@ -5,10 +5,15 @@ import java.util.ArrayList;
 public class PrimeResponseDTO {
 
     private String message;
+    private Float time;
     private ArrayList<Integer> primes;
 
-    public PrimeResponseDTO(String message, ArrayList<Integer> primes) {
+    public PrimeResponseDTO() {
+    }
+
+    public PrimeResponseDTO(String message, Float time, ArrayList<Integer> primes) {
         this.message = message;
+        this.time = time;
         this.primes = primes;
     }
 
@@ -18,6 +23,14 @@ public class PrimeResponseDTO {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Float getTime() {
+        return time;
+    }
+
+    public void setTime(Float time) {
+        this.time = time;
     }
 
     public ArrayList<Integer> getPrimes() {

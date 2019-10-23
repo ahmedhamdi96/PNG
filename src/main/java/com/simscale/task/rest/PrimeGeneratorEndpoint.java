@@ -64,7 +64,7 @@ public class PrimeGeneratorEndpoint {
 	 * @param from natural number to start with
 	 * @param to natural number to end with
 	 * @param strategy strategy to find the primes
-	 * @return response object with a json body containing a message(str) and primes(list of integers)
+	 * @return response object with a json body containing a message(str), primes(list of integers), and time(float)
 	 */
 	@GET
 	public Response doGet(
@@ -80,12 +80,12 @@ public class PrimeGeneratorEndpoint {
 			return Response.ok().entity(primeResponseDTO).build();
 		} catch (IllegalArgumentException e){
 			LOGGER.error(e.getMessage(), e);
-			PrimeResponseDTO primeResponseDTO = new PrimeResponseDTO(e.getMessage(), null);
+			PrimeResponseDTO primeResponseDTO = new PrimeResponseDTO(e.getMessage(), null, null);
 			return Response.status(Response.Status.BAD_REQUEST).entity(primeResponseDTO).build();
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage(), e);
 			String msg = "Something went wrong! Contact development team.";
-			PrimeResponseDTO primeResponseDTO = new PrimeResponseDTO(msg, null);
+			PrimeResponseDTO primeResponseDTO = new PrimeResponseDTO(msg, null, null);
 			return Response.serverError().entity(primeResponseDTO).build();
 		}
 	}
