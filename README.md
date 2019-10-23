@@ -38,6 +38,10 @@ A JavaEE web application to a prime number generator with 4 different prime numb
 
 * Strategies : strategy_1, strategy_2, strategy_3, sieve_strategy
 
+### Testing
+
+> mvn test
+
 ## References
 * [Prime Number Generation Analysis](https://www.geeksforgeeks.org/analysis-different-methods-find-prime-number-python/)
 * [Thorntail Project Generator](https://thorntail.io/generator/)
