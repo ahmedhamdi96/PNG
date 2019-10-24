@@ -17,13 +17,13 @@ A JavaEE web application to a prime number generator with 4 different prime numb
 ## Strategies
 
 ### Strategy1
-Strategy1Thread determines that a number "n" is prime by making sure that n does not have any factors from [2, n-1] inclusive.
+Strategy1 determines that a number "n" is prime by making sure that n does not have any factors from [2, n-1] inclusive.
 
 ### Strategy2
-Strategy2Thread determines that a number "n" is prime by making sure that n does not have any factors from [2, floor(sqrt(n))] inclusive. This is valid due to the fact that a natural number's factors tend to be mirrored after reaching floor(sqrt(n)).
+Strategy2 determines that a number "n" is prime by making sure that n does not have any factors from [2, floor(sqrt(n))] inclusive. This is valid due to the fact that a natural number's factors tend to be mirrored after reaching floor(sqrt(n)).
 
 ### Strategy3
-Strategy3Thread builds on Strategy2Thread and applies the following optimizations: 
+Strategy3 builds on Strategy2 and applies the following optimizations: 
 1) an even number other than 2 can never be prime, ignore even numbers
 2) check for factors between [3, floor(sqrt(n))] inclusive with double increments instead of single increments, because and odd number can have odd factors only
      
@@ -77,3 +77,4 @@ The application runs multiple threads based on the number of cores of the runtim
 ## References
 * [Prime Number Generation Analysis](https://www.geeksforgeeks.org/analysis-different-methods-find-prime-number-python/)
 * [Thorntail Project Generator](https://thorntail.io/generator/)
+s
