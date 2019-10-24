@@ -28,7 +28,7 @@ Strategy3 builds on Strategy2 and applies the following optimizations:
 2) check for factors between [3, floor(sqrt(n))] inclusive with double increments instead of single increments, because an odd number can have odd factors only
      
 ### SieveStrategy
-SieveStrategy is an implementation of the of the Sieve of Eratosthenes. SieveStrategy uses a an array of flags of size equal to param "to" the flags array identifies whether the number at the corresponding index is prime or not. When traversing the flags array to return a list of primes from param "to" to param "from", indices < param "from" are ignored. 
+SieveStrategy is an implementation of the of the Sieve of Eratosthenes. SieveStrategy uses a an array of flags of size equal to param "to". The flags array identifies whether the number at the corresponding index is prime or not. When traversing the flags array to return a list of primes from param "to" to param "from", indices < param "from" are ignored. 
  
 ## How To Run
 
