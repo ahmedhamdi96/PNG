@@ -12,7 +12,7 @@ public class Strategy3Thread extends PrimeStrategyThread {
      * following optimizations:
      * 1) an even number other than 2 can never be prime, ignore even numbers
      * 2) check for factors between [3, floor(sqrt(n))] inclusive with double
-     * increments instead of single increments, because and odd number can have
+     * increments instead of single increments, because an odd number can have
      * odd factors only
      */
 
