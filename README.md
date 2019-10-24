@@ -58,7 +58,7 @@ SieveStrategy is an implementation of the of the Sieve of Eratosthenes. SieveStr
 
 > mvn test
 
-## Threads
+## Threading
 
 The application runs multiple threads based on the number of cores of the runtime environment. The payload which is the list of numbers from the given starting integer to the final integer is split into equal payloads and passed to the threads. The results from the threads are merged together to return the final list of prime numbers.
 
@@ -72,7 +72,7 @@ The application runs multiple threads based on the number of cores of the runtim
 
 *no threading was applied on the SieveStrategy (Sieve of Eratosthenes)*
 
-*to activate threading set the flag (runSingleThread) on com.simscale.task.business_logic_layer.thread_management.ThreadManagement:15 to false*
+*to activate threading set the flag (runSingleThread) on com.simscale.task.business_logic_layer.thread_management.ThreadManagement:15 to false (currently set to false)*
 
 ## References
 * [Prime Number Generation Analysis](https://www.geeksforgeeks.org/analysis-different-methods-find-prime-number-python/)

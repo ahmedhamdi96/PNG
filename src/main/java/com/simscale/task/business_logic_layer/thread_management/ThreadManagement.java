@@ -72,15 +72,17 @@ public class ThreadManagement {
             PrimeStrategyThread[] primeStrategyThreads = new PrimeStrategyThread[threadsNo];
             int threadFrom = from;
             int threadTo = from + threadPayload - 1 ;
+            LOGGER.info("threadsNo: " + threadsNo + ", threadPayload: "+threadPayload + ", remainder: "+remainder);
 
             for (int i=0; i<threadsNo; i++) {
+                LOGGER.info("threadFrom: " + threadFrom + ", threadTo: "+threadTo);
                 PrimeStrategyThread primeStrategyThread = primeStrategiesThreadSwitch(primeStrategyEnum+" thread "+i, threadFrom, threadTo, primeStrategyEnum);
                 primeStrategyThreads[i] = primeStrategyThread;
                 primeStrategyThread.start();
                 threadFrom = threadTo + 1;
                 threadTo = threadFrom + threadPayload - 1;
 
-                if (i == threadsNo-1) {
+                if (i == threadsNo-2) {
                     //add the remainder if this is the last thread
                     threadTo += remainder;
                 }
