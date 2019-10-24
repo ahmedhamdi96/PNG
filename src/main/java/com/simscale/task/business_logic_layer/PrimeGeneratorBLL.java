@@ -1,10 +1,7 @@
 package com.simscale.task.business_logic_layer;
 
+import com.simscale.task.business_logic_layer.strategies.*;
 import com.simscale.task.enums.PrimeStrategyEnum;
-import com.simscale.task.business_logic_layer.strategies.SieveStrategy;
-import com.simscale.task.business_logic_layer.strategies.Strategy1;
-import com.simscale.task.business_logic_layer.strategies.Strategy2;
-import com.simscale.task.business_logic_layer.strategies.Strategy3;
 import com.simscale.task.data_access_layer.PrimeGeneratorDAL;
 import com.simscale.task.dtos.PrimeResponseDTO;
 import org.apache.log4j.Logger;
@@ -13,6 +10,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
+import static com.simscale.task.business_logic_layer.thread_management.ThreadManagement.runThreads;
 
 @Stateless
 public class PrimeGeneratorBLL {
@@ -28,11 +27,11 @@ public class PrimeGeneratorBLL {
      * @param primeStrategyEnum strategy enum
      * @return primes list
      */
-    public ArrayList<Integer> primeStrategyGenerate (Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum){
+    public ArrayList<Integer> primeStrategyGenerate (Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum) throws InterruptedException {
         switch (primeStrategyEnum){
-            case STRATEGY_1: return new Strategy1().generatePrimes(from, to);
-            case STRATEGY_2: return new Strategy2().generatePrimes(from, to);
-            case STRATEGY_3: return new Strategy3().generatePrimes(from, to);
+            case STRATEGY_1:
+            case STRATEGY_2:
+            case STRATEGY_3: return runThreads(from, to, primeStrategyEnum);
             case SIEVE_STRATEGY: return new SieveStrategy().generatePrimes(from, to);
             default: return null;
         }
@@ -45,7 +44,7 @@ public class PrimeGeneratorBLL {
      * @param primeStrategyEnum strategy enum
      * @return a DTO containing a message(str) and primes(list of integers)
      */
-    public PrimeResponseDTO generatePrimeNumbers(Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum){
+    public PrimeResponseDTO generatePrimeNumbers(Integer from, Integer to, PrimeStrategyEnum primeStrategyEnum) throws InterruptedException {
         LOGGER.info("generatePrimeNumbers: ENTER");
         Timestamp timestamp =  new Timestamp(System.currentTimeMillis());
         String strategy  =  primeStrategyEnum.name().toLowerCase();

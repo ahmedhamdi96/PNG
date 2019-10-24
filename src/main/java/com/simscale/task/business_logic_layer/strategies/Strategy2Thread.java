@@ -1,10 +1,14 @@
 package com.simscale.task.business_logic_layer.strategies;
 
 
-public class Strategy2 extends PrimeStrategy {
+public class Strategy2Thread extends PrimeStrategyThread {
+
+    public Strategy2Thread(String name, Integer from, Integer to) {
+        super(name, from, to);
+    }
 
     /**
-     * Strategy2 determines that a number "n" is prime by
+     * Strategy2Thread determines that a number "n" is prime by
      * making sure that n does not have any factors from
      * [2, floor(sqrt(n))] inclusive. This is valid due
      * to the fact that a natural number's factors tend

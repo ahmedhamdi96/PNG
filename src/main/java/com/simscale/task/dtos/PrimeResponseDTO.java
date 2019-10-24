@@ -49,7 +49,7 @@ public class PrimeResponseDTO {
         StringBuilder s = new StringBuilder("[ ");
 
         for (Integer p:primes){
-            s.append(p);
+            s.append(p+" ");
         }
 
         s.append("]");

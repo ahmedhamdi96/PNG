@@ -1,8 +1,25 @@
 package com.simscale.task.business_logic_layer.strategies;
 
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 
-public abstract class PrimeStrategy {
+public abstract class PrimeStrategyThread extends Thread {
+
+    private Integer from;
+    private Integer to;
+    private ArrayList<Integer> primes;
+    private final static Logger LOGGER = Logger.getLogger(PrimeStrategyThread.class);
+
+    public PrimeStrategyThread(String name, Integer from, Integer to) {
+        super(name);
+        this.from = from;
+        this.to = to;
+    }
+
+    public ArrayList<Integer> getPrimes() {
+        return primes;
+    }
 
     /**
      * checks whether the given number is a prime or not
@@ -27,5 +44,10 @@ public abstract class PrimeStrategy {
             }
         }
         return primes;
+    }
+
+    public void run(){
+        LOGGER.info(this.getName() + " is running.");
+        this.primes = generatePrimes(this.from, this.to);
     }
 }
